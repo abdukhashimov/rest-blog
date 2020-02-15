@@ -34,7 +34,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 class UserInfoAdmin(admin.ModelAdmin):
-    list_display = ('bio', 'profile_picture')
+    fields = ('bio', 'profile_picture')
 
     def save_model(self, request, obj, form, change):
         if not obj.user:
@@ -49,3 +49,6 @@ class UserInfoAdmin(admin.ModelAdmin):
 
 admin.site.register(UserInfo, UserInfoAdmin)
 admin.site.register(User, UserAdmin)
+
+
+admin.site.unregister(Group)
